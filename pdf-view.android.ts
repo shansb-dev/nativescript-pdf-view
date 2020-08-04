@@ -8,7 +8,6 @@ import { PDFViewCommon, srcProperty } from './pdf-view.common';
 
 export class PDFView extends PDFViewCommon {
   private promise: Promise<void>;
-  private tempFolder = fs.knownFolders.temp().getFolder('PDFViewer.temp/');
 
   private onLoadHandler = (() => {
     const pdfViewRef = new WeakRef(this);
@@ -44,6 +43,16 @@ export class PDFView extends PDFViewCommon {
 
     // reset any previous promise since we've called loadPDF again
     this.promise = void 0;
+
+    // detect base64 stream
+    if (src.indexOf('data:application/pdf;base64,') === 0) {
+        const base64data = android.util.Base64.decode(
+          src.substr(28),
+          android.util.Base64.DEFAULT
+        );
+        this.createTempFile(base64data);
+        return;
+    }
 
     if (src.indexOf('://') === -1) {
       src = 'file://' + src;

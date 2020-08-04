@@ -1,6 +1,7 @@
 import * as app from 'tns-core-modules/application';
 import { Property, View } from 'tns-core-modules/ui/core/view';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
+import * as fs from 'tns-core-modules/file-system';
 
 export abstract class PDFViewCommon extends View {
   public static loadEvent = 'load';
@@ -15,6 +16,8 @@ export abstract class PDFViewCommon extends View {
    */
   public src: string;
 
+  protected tempFolder = fs.knownFolders.temp().getFolder('PDFViewer.temp/');
+
   public static notifyOfEvent(
     eventName: string,
     pdfViewRef: WeakRef<PDFViewCommon>,
@@ -24,6 +27,17 @@ export abstract class PDFViewCommon extends View {
     if (viewer) {
       viewer.notify({ eventName, object: viewer });
     }
+  }
+
+  public loadPDF(src: string) {}
+
+  protected createTempFile(base64data: any) {
+      this.tempFolder.clear().then(() => {
+          const file = fs.Folder.fromPath(this.tempFolder.path)
+          .getFile('_' + Date.now() + '.pdf');
+          file.writeSync(base64data);
+          this.loadPDF(file.path);
+      });
   }
 }
 
