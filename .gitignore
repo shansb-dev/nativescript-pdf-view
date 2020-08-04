@@ -14,3 +14,6 @@ demo/platforms
 demo/node_modules
 demo/.migration_backup
 node_modules
+demo/app/main-page.d.ts
+demo/app/main-view-model.d.ts
+demo/app/app.d.ts
