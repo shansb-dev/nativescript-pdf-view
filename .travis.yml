@@ -18,6 +18,7 @@ jobs:
        - cd src 
        - npm ci && npm run build
     - stage: release
+      if: branch = master || branch = next
       # Advanced: optionally overwrite your default `script` step to skip the tests
       # script: skip
       deploy:
@@ -26,10 +27,6 @@ jobs:
         script: 
           - cd src 
           - npx semantic-release
-        on:
-          branch: 
-            - master
-            - next
 
 branches:
   except:
