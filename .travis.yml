@@ -27,10 +27,7 @@ jobs:
           - cd src 
           - npx semantic-release
         on:
-          branch:    
-            only:      
-              - master 
-              - next
+          all_branches: true
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
