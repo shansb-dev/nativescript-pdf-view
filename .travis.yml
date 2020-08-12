@@ -11,9 +11,11 @@ jobs:
   include:
     - stage: test
       script:
+       - cd src 
        - npm ci && npm run lint
     - stage: build
       script:
+       - cd src 
        - npm ci && npm run build
     - stage: release
       # Advanced: optionally overwrite your default `script` step to skip the tests
@@ -21,10 +23,9 @@ jobs:
       deploy:
         provider: script
         skip_cleanup: true
-        script: npx semantic-release
-        on:
-          branch: master
-
+        script: 
+          - cd src 
+          - npx semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/

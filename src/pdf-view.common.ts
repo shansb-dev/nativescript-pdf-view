@@ -1,7 +1,7 @@
 import * as app from 'tns-core-modules/application';
+import * as fs from 'tns-core-modules/file-system';
 import { Property, View } from 'tns-core-modules/ui/core/view';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
-import * as fs from 'tns-core-modules/file-system';
 
 export abstract class PDFViewCommon extends View {
   public static loadEvent = 'load';
@@ -20,7 +20,7 @@ export abstract class PDFViewCommon extends View {
 
   public static notifyOfEvent(
     eventName: string,
-    pdfViewRef: WeakRef<PDFViewCommon>,
+    pdfViewRef: WeakRef<any>,
   ) {
     const viewer = pdfViewRef.get();
 
