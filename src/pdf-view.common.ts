@@ -20,21 +20,23 @@ export abstract class PDFViewCommon extends View {
 
   public static notifyOfEvent(
     eventName: string,
+    // tslint:disable-next-line: no-any
     pdfViewRef: WeakRef<any>,
   ) {
     const viewer = pdfViewRef.get();
 
     if (viewer) {
+      // tslint:disable-next-line: no-unsafe-any
       viewer.notify({ eventName, object: viewer });
     }
   }
 
-  public loadPDF(src: string) {}
+  public abstract loadPDF(src: string);
 
-  protected createTempFile(base64data: any) {
+  protected createTempFile(base64data: string) {
       this.tempFolder.clear().then(() => {
           const file = fs.Folder.fromPath(this.tempFolder.path)
-          .getFile('_' + Date.now() + '.pdf');
+          .getFile(`_${Date.now()}.pdf`);
           file.writeSync(base64data);
           this.loadPDF(file.path);
       });
@@ -42,8 +44,8 @@ export abstract class PDFViewCommon extends View {
 }
 
 export const enableAnnotationRenderingProperty = new Property<PDFViewCommon, boolean>({
-  name: 'enableAnnotationRendering',
   defaultValue: false,
+  name: 'enableAnnotationRendering',
 });
 enableAnnotationRenderingProperty.register(PDFViewCommon);
 

@@ -45,9 +45,10 @@ export class PDFView extends PDFViewCommon {
     this.promise = void 0;
 
     // detect base64 stream
-    if (src.indexOf('data:application/pdf;base64,') === 0) {
+    const base64prefix = 'data:application/pdf;base64,';
+    if (src.indexOf(base64prefix) === 0) {
         const base64data = android.util.Base64.decode(
-          src.substr(28),
+          src.substr(base64prefix.length),
           android.util.Base64.DEFAULT);
         this.createTempFile(base64data);
         return;
