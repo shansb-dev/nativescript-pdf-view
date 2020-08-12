@@ -23,9 +23,7 @@ jobs:
       deploy:
         provider: script
         cleanup: false
-        script: 
-          - cd src 
-          - npx semantic-release
+        script: cd src && npx semantic-release
         on:
           all_branches: true
 branches:
