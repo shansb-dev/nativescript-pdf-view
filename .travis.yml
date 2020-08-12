@@ -23,7 +23,7 @@ jobs:
       deploy:
         provider: script
         skip_cleanup: true
-        script: cd src && npm ci && npx semantic-release
+        script: cp README.md src/ && cd src && npm ci && npx semantic-release
         on:
           all_branches: true
 branches:

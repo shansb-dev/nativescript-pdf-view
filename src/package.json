@@ -56,7 +56,7 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/madmas/nativescript-pdf-view",
-  "readmeFilename": "../README.md",
+  "readmeFilename": "README.md",
   "devDependencies": {
     "@semantic-release/release-notes-generator": "^9.0.1",
     "semantic-release": "^17.1.1",
