@@ -1,4 +1,4 @@
-import { screen } from 'tns-core-modules/platform';
+import { screen } from '@nativescript/core/platform';
 
 import { PDFViewCommon, srcProperty } from './pdf-view.common';
 
@@ -55,9 +55,10 @@ export class PDFView extends PDFViewCommon {
 
     let url: NSURL;
 
-        // detect base64 stream
-    if (src.indexOf('data:application/pdf;base64,') === 0) {
-      const base64data = NSData.alloc().initWithBase64EncodedStringOptions(src.substr(28), 0);
+    // detect base64 stream
+    const base64prefix = 'data:application/pdf;base64,';
+    if (src.indexOf(base64prefix) === 0) {
+      const base64data = NSData.alloc().initWithBase64EncodedStringOptions(src.substr(base64prefix.length), 0);
       this.createTempFile(base64data);
       return;
     }
@@ -88,9 +89,6 @@ export class PDFView extends PDFViewCommon {
   }
 
   private get mainScreen(): UIScreen {
-    // tslint:disable-next-line:strict-type-predicates
-    return typeof UIScreen.mainScreen === 'function' ?
-      UIScreen.mainScreen() as UIScreen :  // xCode 7 and below
-      UIScreen.mainScreen;     // xCode 8+
+    return UIScreen.mainScreen;
   }
 }

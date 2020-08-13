@@ -1,7 +1,5 @@
-import * as app from 'tns-core-modules/application';
-import { Property, View } from 'tns-core-modules/ui/core/view';
-import * as dialogs from 'tns-core-modules/ui/dialogs';
-import * as fs from 'tns-core-modules/file-system';
+import * as fs from '@nativescript/core/file-system';
+import { Property, View } from '@nativescript/core/ui/core/view';
 
 export abstract class PDFViewCommon extends View {
   public static loadEvent = 'load';
@@ -20,21 +18,24 @@ export abstract class PDFViewCommon extends View {
 
   public static notifyOfEvent(
     eventName: string,
-    pdfViewRef: WeakRef<PDFViewCommon>,
+    // tslint:disable-next-line: no-any
+    pdfViewRef: WeakRef<any>,
   ) {
     const viewer = pdfViewRef.get();
 
     if (viewer) {
+      // tslint:disable-next-line: no-unsafe-any
       viewer.notify({ eventName, object: viewer });
     }
   }
 
-  public loadPDF(src: string) {}
+  public abstract loadPDF(src: string);
 
+  // tslint:disable-next-line: no-any
   protected createTempFile(base64data: any) {
       this.tempFolder.clear().then(() => {
           const file = fs.Folder.fromPath(this.tempFolder.path)
-          .getFile('_' + Date.now() + '.pdf');
+          .getFile(`_${Date.now()}.pdf`);
           file.writeSync(base64data);
           this.loadPDF(file.path);
       });
@@ -42,8 +43,8 @@ export abstract class PDFViewCommon extends View {
 }
 
 export const enableAnnotationRenderingProperty = new Property<PDFViewCommon, boolean>({
-  name: 'enableAnnotationRendering',
   defaultValue: false,
+  name: 'enableAnnotationRendering',
 });
 enableAnnotationRenderingProperty.register(PDFViewCommon);
 

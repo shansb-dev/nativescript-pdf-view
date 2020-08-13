@@ -1,5 +1,5 @@
 {
-  "defaultSeverity": "warn",
+  "defaultSeverity": "error",
   "rules": {
     "adjacent-overload-signatures": true,
     "align": [

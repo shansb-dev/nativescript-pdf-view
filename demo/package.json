@@ -9,17 +9,17 @@
   },
   "nativescript": {
     "id": "de.mynethome.nativescriptpdfviewdemo",
-    "tns-ios": {
-      "version": "6.5.2"
-    },
     "tns-android": {
       "version": "6.5.3"
+    },
+    "tns-ios": {
+      "version": "6.5.2"
     }
   },
   "dependencies": {
     "@nativescript/core": "6.5.12",
     "@nativescript/theme": "^2.3.3",
-    "nativescript-pdf-view": "file:.."
+    "nativescript-pdf-view": "file:../src"
   },
   "devDependencies": {
     "babel-traverse": "6.24.1",
