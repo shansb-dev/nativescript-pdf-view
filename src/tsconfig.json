@@ -14,7 +14,7 @@
         "baseUrl": ".",
         "paths": {
             "*": [
-                "./node_modules/tns-core-modules/*",
+                "./node_modules/@nativescript/core/*",
                 "./node_modules/*"
             ]
         },
@@ -28,7 +28,6 @@
         "noImplicitReturns": true,
         "noImplicitUseStrict": false,
         "noFallthroughCasesInSwitch": true,
-        "strictNullChecks": true,
         "typeRoots": [
             "./node_modules/@types",
             "./node_modules"
@@ -38,7 +37,8 @@
     },
     "exclude": [
         "demo",
-        "node_modules"
+        "node_modules",
+        "out"
     ],
     "compileOnSave": false
 }

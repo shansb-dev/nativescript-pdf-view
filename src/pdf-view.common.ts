@@ -1,7 +1,5 @@
-import * as app from 'tns-core-modules/application';
-import * as fs from 'tns-core-modules/file-system';
-import { Property, View } from 'tns-core-modules/ui/core/view';
-import * as dialogs from 'tns-core-modules/ui/dialogs';
+import * as fs from '@nativescript/core/file-system';
+import { Property, View } from '@nativescript/core/ui/core/view';
 
 export abstract class PDFViewCommon extends View {
   public static loadEvent = 'load';
@@ -33,7 +31,8 @@ export abstract class PDFViewCommon extends View {
 
   public abstract loadPDF(src: string);
 
-  protected createTempFile(base64data: string) {
+  // tslint:disable-next-line: no-any
+  protected createTempFile(base64data: any) {
       this.tempFolder.clear().then(() => {
           const file = fs.Folder.fromPath(this.tempFolder.path)
           .getFile(`_${Date.now()}.pdf`);

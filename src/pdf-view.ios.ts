@@ -1,4 +1,4 @@
-import { screen } from 'tns-core-modules/platform';
+import { screen } from '@nativescript/core/platform';
 
 import { PDFViewCommon, srcProperty } from './pdf-view.common';
 
@@ -89,9 +89,6 @@ export class PDFView extends PDFViewCommon {
   }
 
   private get mainScreen(): UIScreen {
-    // tslint:disable-next-line:strict-type-predicates
-    return typeof UIScreen.mainScreen === 'function' ?
-      UIScreen.mainScreen() as UIScreen :  // xCode 7 and below
-      UIScreen.mainScreen;     // xCode 8+
+    return UIScreen.mainScreen;
   }
 }

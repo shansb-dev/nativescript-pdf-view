@@ -1,8 +1,7 @@
 /// <reference path="./AndroidPdfViewer.d.ts" />
 
 import pdfviewer = com.github.barteksc.pdfviewer;
-import * as fs from 'tns-core-modules/file-system';
-import * as http from 'tns-core-modules/http';
+import * as http from '@nativescript/core/http';
 
 import { PDFViewCommon, srcProperty } from './pdf-view.common';
 
