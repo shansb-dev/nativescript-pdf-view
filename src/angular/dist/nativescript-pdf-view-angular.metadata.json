@@ -1,0 +1,1 @@
+{"__symbolic":"module","version":4,"metadata":{"PDFViewModule":{"__symbolic":"class","decorators":[{"__symbolic":"call","expression":{"__symbolic":"reference","module":"@angular/core","name":"NgModule","line":9,"character":1}}],"members":{}}},"origins":{"PDFViewModule":"./index"},"importAs":"nativescript-pdf-view-angular"}

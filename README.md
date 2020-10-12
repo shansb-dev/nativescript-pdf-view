@@ -33,10 +33,17 @@ tns plugin add nativescript-pdf-view
 
 ### Angular NativeScript
 
-```ts
-import { PDFView } from 'nativescript-pdf-view';
-import { registerElement } from 'nativescript-angular';
-registerElement('PDFView', () => PDFView);
+```app.module.ts
+import { PDFViewModule } from "nativescript-pdf-view/angular/dist";
+
+@NgModule({
+    ...
+    imports: [
+        ...
+        PDFViewModule
+    ],
+    ...
+})
 ```
 
 ```html

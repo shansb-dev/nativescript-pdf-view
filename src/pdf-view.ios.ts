@@ -1,7 +1,7 @@
-import { screen } from '@nativescript/core/platform';
 
 import { PDFViewCommon, srcProperty } from './pdf-view.common';
 
+@NativeClass()
 class PDFViewDelegate extends NSObject implements WKNavigationDelegate {
   public static ObjCProtocols = [WKNavigationDelegate];
 

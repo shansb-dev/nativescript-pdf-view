@@ -1,4 +1,4 @@
-/// <reference path="./node_modules/tns-platform-declarations/android.d.ts" />
+/// <reference path="./node_modules/@nativescript/types-android/lib/android-29.d.ts"
 
 declare module com {
   export module github {
