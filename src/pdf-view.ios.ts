@@ -13,6 +13,7 @@ class PDFViewDelegate extends NSObject implements WKNavigationDelegate {
     return delegate;
   }
 
+  // @ts-ignore
   public webViewDidFinishNavigation(webView: WKWebView) {
     PDFViewCommon.notifyOfEvent(PDFViewCommon.loadEvent, this.owner);
   }

@@ -12,6 +12,7 @@ export class PDFView extends PDFViewCommon {
     const pdfViewRef = new WeakRef(this);
 
     return new pdfviewer.listener.OnLoadCompleteListener({
+      // @ts-ignore
       loadComplete: numPages => {
         PDFViewCommon.notifyOfEvent(PDFViewCommon.loadEvent, pdfViewRef);
       },
